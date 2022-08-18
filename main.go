@@ -37,10 +37,11 @@ func main() {
 				Text: "Toggle Indicator",
 
 				OnClicked: func() {
+					// a value of 1024 activates the overlay, a value of 0 deactivates it. Other values seem to deactivate it as well but you never know
 					if indicatorStatus == 1024 {
 						setKey(0)
 					} else {
-						setKey(1)
+						setKey(1024)
 					}
 					getKey()
 					indicatorTextLabel.SetText(indicatorStatusString)
