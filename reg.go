@@ -5,8 +5,11 @@ import (
 )
 
 func getKey() {
-	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\NVIDIA Corporation\Global\NGXCore`, registry.QUERY_VALUE)
-
+	key, err := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\NVIDIA Corporation\Global\NGXCore`, registry.QUERY_VALUE)
+	if err != nil {
+		indicatorStatusString = "Error: DLSS not supported or registry path not accessible"
+		return
+	}
 	value, _, _ := key.GetIntegerValue("ShowDlssIndicator")
 	defer key.Close()
 
@@ -20,18 +23,9 @@ func getKey() {
 		indicatorStatusString = "NOT SET"
 	}
 }
-func setKeyOn() {
+
+func setKey(value int) {
 	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\NVIDIA Corporation\Global\NGXCore`, registry.SET_VALUE)
-
-	key.SetDWordValue("ShowDlssIndicator", uint32(1024))
+	key.SetDWordValue("ShowDlssIndicator", uint32(value))
 	defer key.Close()
-
-}
-
-func setKeyOff() {
-	key, _ := registry.OpenKey(registry.LOCAL_MACHINE, `SOFTWARE\NVIDIA Corporation\Global\NGXCore`, registry.SET_VALUE)
-
-	key.SetDWordValue("ShowDlssIndicator", uint32(0))
-	defer key.Close()
-
 }
