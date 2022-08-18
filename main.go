@@ -24,7 +24,7 @@ func main() {
 		Layout: VBox{},
 		Children: []Widget{
 			TextLabel{
-				Text:          "The DLSS Indicator is currently",
+				Text:          "The DLSS Indicator status:",
 				TextAlignment: AlignHCenterVCenter,
 			},
 			TextLabel{
