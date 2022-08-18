@@ -38,9 +38,9 @@ func main() {
 
 				OnClicked: func() {
 					if indicatorStatus == 1024 {
-						setKeyOff()
+						setKey(0)
 					} else {
-						setKeyOn()
+						setKey(1)
 					}
 					getKey()
 					indicatorTextLabel.SetText(indicatorStatusString)
