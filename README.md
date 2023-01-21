@@ -2,6 +2,12 @@
 ### This is a basic utility to toggle the DLSS indicator overlay as described in [this arcticle](https://www.pcgamer.com/nvidia-dlss-indicator/)
 
 
+#### How to use:
+
+Grab the latest release from [here](https://github.com/Watn3y/DLSS-indicator-toggle/releases/latest/download/DLSS_indicator_toggle.exe) and run it.
+
+
+
 #### How to build:
 - Embed the manifest inside your binary 
 
